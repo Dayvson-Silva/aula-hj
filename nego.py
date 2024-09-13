@@ -57,3 +57,53 @@ def analise_vendas(produtos):
     print(f"Lucro Total: R${lucro_total:.2f}")
 
 analise_vendas(produtos)
+
+
+def identificar_produtos_vendidos(produtos):
+    if not produtos:
+        print("Nenhum produto disponível para análise.")
+        return
+
+    # Identificar o produto mais vendido e o menos vendido
+    produto_mais_vendido = max(produtos, key=lambda p: p['quantidade_vendida'])
+    produto_menos_vendido = min(produtos, key=lambda p: p['quantidade_vendida'])
+
+    # Exibir informações do produto mais vendido
+    print(f"Produto Mais Vendido:")
+    print(f"  Nome: {produto_mais_vendido['nome']}")
+    print(f"  Quantidade Vendida: {produto_mais_vendido['quantidade_vendida']}")
+    print(f"  Preço para o Usuário: R${produto_mais_vendido['preco_usuario']:.2f}")
+    print(f"  Receita: R${produto_mais_vendido['preco_usuario'] * produto_mais_vendido['quantidade_vendida']:.2f}")
+    print()
+
+    # Exibir informações do produto menos vendido
+    print(f"Produto Menos Vendido:")
+    print(f"  Nome: {produto_menos_vendido['nome']}")
+    print(f"  Quantidade Vendida: {produto_menos_vendido['quantidade_vendida']}")
+    print(f"  Preço para o Usuário: R${produto_menos_vendido['preco_usuario']:.2f}")
+    print(f"  Receita: R${produto_menos_vendido['preco_usuario'] * produto_menos_vendido['quantidade_vendida']:.2f}")
+
+# Exemplo de uso
+produtos = [
+    {
+        'nome': 'Produto A',
+        'preco_original': 100.0,
+        'preco_usuario': 80.0,
+        'quantidade_vendida': 10
+    },
+    {
+        'nome': 'Produto B',
+        'preco_original': 150.0,
+        'preco_usuario': 120.0,
+        'quantidade_vendida': 5
+    },
+    {
+        'nome': 'Produto C',
+        'preco_original': 200.0,
+        'preco_usuario': 180.0,
+        'quantidade_vendida': 8
+    }
+]
+
+# Chamar a função para identificar produtos mais e menos vendidos
+identificar_produtos_vendidos(produtos)
